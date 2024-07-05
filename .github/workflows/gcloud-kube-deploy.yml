@@ -41,23 +41,23 @@ jobs:
 
       - name: Build
         run: |-
-          docker build -t ifedim/multi-client-k8s-gh:latest -t ifedim/multi-client-k8s-gh:${{ env.SHA }} -f ./client/Dockerfile ./client
-          docker build -t ifedim/multi-server-k8s-gh:latest -t ifedim/multi-server-k8s-gh:${{ env.SHA }} -f ./server/Dockerfile ./server
-          docker build -t ifedim/multi-worker-k8s-gh:latest -t ifedim/multi-worker-k8s-gh:${{ env.SHA }} -f ./worker/Dockerfile ./worker
+          docker build -t ifedim/multi-client:latest -t ifedim/multi-client:${{ env.SHA }} -f ./client/Dockerfile ./client
+          docker build -t ifedim/multi-server:latest -t ifedim/multi-server:${{ env.SHA }} -f ./server/Dockerfile ./server
+          docker build -t ifedim/multi-worker:latest -t ifedim/multi-worker:${{ env.SHA }} -f ./worker/Dockerfile ./worker
 
       - name: Push
         run: |-
-          docker push ifedim/multi-client-k8s-gh:latest
-          docker push ifedim/multi-server-k8s-gh:latest
-          docker push ifedim/multi-worker-k8s-gh:latest
+          docker push ifedim/multi-client:latest
+          docker push ifedim/multi-client:latest
+          docker push ifedim/multi-client:latest
 
-          docker push ifedim/multi-client-k8s-gh:${{ env.SHA }}
-          docker push ifedim/multi-server-k8s-gh:${{ env.SHA }}
-          docker push ifedim/multi-worker-k8s-gh:${{ env.SHA }}
+          docker push ifedim/multi-client:${{ env.SHA }}
+          docker push ifedim/multi-server:${{ env.SHA }}
+          docker push ifedim/multi-worker:${{ env.SHA }}
 
       - name: Apply
         run: |-
           kubectl apply -f "k8's"
-          kubectl set image deployments/server-deployment server=ifedim/multi-server-"k8's"-gh:${{ env.SHA }}
-          kubectl set image deployments/client-deployment client=ifedim/multi-client-"k8's"-gh:${{ env.SHA }}
-          kubectl set image deployments/worker-deployment worker=ifedim/multi-worker-"k8's"-gh:${{ env.SHA }}
+          kubectl set image deployments/server-deployment server=ifedim/multi-server:${{ env.SHA }}
+          kubectl set image deployments/client-deployment client=ifedim/multi-client:${{ env.SHA }}
+          kubectl set image deployments/worker-deployment worker=ifedim/multi-worker:${{ env.SHA }}
