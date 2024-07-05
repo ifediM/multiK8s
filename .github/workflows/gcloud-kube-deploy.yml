@@ -48,8 +48,8 @@ jobs:
       - name: Push
         run: |-
           docker push ifedim/multi-client:latest
-          docker push ifedim/multi-client:latest
-          docker push ifedim/multi-client:latest
+          docker push ifedim/multi-server:latest
+          docker push ifedim/multi-worker:latest
 
           docker push ifedim/multi-client:${{ env.SHA }}
           docker push ifedim/multi-server:${{ env.SHA }}
