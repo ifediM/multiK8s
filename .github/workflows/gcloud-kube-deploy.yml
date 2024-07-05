@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Test
         run: |-
@@ -57,7 +57,7 @@ jobs:
 
       - name: Apply
         run: |-
-          kubectl apply -f k8s
-          kubectl set image deployments/server-deployment server=ifedim/multi-server-k8s-gh:${{ env.SHA }}
-          kubectl set image deployments/client-deployment client=ifedim/multi-client-k8s-gh:${{ env.SHA }}
-          kubectl set image deployments/worker-deployment worker=ifedim/multi-worker-k8s-gh:${{ env.SHA }}
+          kubectl apply -f "k8's"
+          kubectl set image deployments/server-deployment server=ifedim/multi-server-"k8's"-gh:${{ env.SHA }}
+          kubectl set image deployments/client-deployment client=ifedim/multi-client-"k8's"-gh:${{ env.SHA }}
+          kubectl set image deployments/worker-deployment worker=ifedim/multi-worker-"k8's"-gh:${{ env.SHA }}
