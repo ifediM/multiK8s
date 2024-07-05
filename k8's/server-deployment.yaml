@@ -16,7 +16,7 @@ spec:
         - name: server
           image: ifedim/multi-server
           ports:
-            - containerPort: 5000 
+            - containerPort: 5000
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
@@ -34,4 +34,4 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: pgpassword
-                  key: PGPASSWORD  
+                  key: PGPASSWORD
