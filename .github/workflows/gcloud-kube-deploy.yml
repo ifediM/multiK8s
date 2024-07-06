@@ -58,6 +58,6 @@ jobs:
       - name: Apply
         run: |-
           kubectl apply -f "k8's"
-          kubectl set image deployments/server-deployment server=ifedim/multi-server:${{ env.SHA }}
-          kubectl set image deployments/client-deployment client=ifedim/multi-client:${{ env.SHA }}
+          kubectl set image deployments/client-deployment server=ifedim/multi-client:${{ env.SHA }}
+          kubectl set image deployments/server-deployment client=ifedim/multi-server:${{ env.SHA }}
           kubectl set image deployments/worker-deployment worker=ifedim/multi-worker:${{ env.SHA }}
