@@ -27,7 +27,7 @@ jobs:
       - name: Set Project
         uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: kubernetes-gitaction 
+          project_id: kube-gitaction 
 
       - name: Auth
         run: |-
@@ -36,8 +36,8 @@ jobs:
       - name: Get Credentials
         uses: google-github-actions/get-gke-credentials@v1
         with:
-          cluster_name: cluster-1
-          location: us-central1-a 
+          cluster_name: kube-git-deploy
+          location: us-central1-c 
 
       - name: Build
         run: |-
